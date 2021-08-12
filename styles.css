@@ -4,14 +4,12 @@
 
 body {
   display: flex;
-
-  background-image: url(./images/Screenshot\ from\ 2021-08-10\ 14-22-48.png);
+  background-image: url(./images/photo-1505826759037-406b40feb4cd.jpeg);
   background-size: cover;
   font-family: sans-serif;
   padding: 5% 10%;
   width: 100%;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;

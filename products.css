@@ -1,5 +1,5 @@
 body {
-  background-image: url(./images/IMG-20170505-WA0003.jpg);
+  /* background-image: url(./images/IMG-20170505-WA0003.jpg); */
   height: fit-content;
   width: fit-content;
   background-size: cover;
@@ -43,5 +43,5 @@ body {
 }
 
 .head {
-  color: white;
+  color: black;
 }

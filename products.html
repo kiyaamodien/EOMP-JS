@@ -17,6 +17,12 @@
     </nav>
     <!--Heading-->
     <h1 style="margin-top: 60px; text-align: center">Product</h1>
+    <div id="filters">
+      <form onsubmit="event.preventDefault(); searchForProducts();">
+        <input type="text" required id="searchTerm" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
     <div id="products-container"></div>
     <script src="./index.js"></script>
   </body>

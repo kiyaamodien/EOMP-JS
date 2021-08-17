@@ -1,21 +1,13 @@
+let products = [];
+let cart = [];
+console.log(cart);
+
 fetch("https://boiling-savannah-92766.herokuapp.com/all-products/")
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
     let products = data.data;
-    let container = document.querySelector("#products-container");
-    container.innerHTML = "";
-    products.forEach((product) => {
-      container.innerHTML += `
-        <div class="g-btn">
-          <p class="">${product[1]}</p>
-          <p class="">${product[2]}</p>
-          <p class="price">${product[3]}</p>
-          <p class="">${product[4]}</p>
-        </div>
-        `;
-    });
-    // renderProducts(data);
+    renderProducts(products);
   });
 
 function getParentWithKey(element) {
@@ -28,12 +20,12 @@ function getParentWithKey(element) {
   return parent;
 }
 
-$(".add-to-cart").on("click", (e) => {
-  const parent = getParentWithKey(e.currentTarget);
+// $(".add-to-cart").on("click", (e) => {
+//   const parent = getParentWithKey(e.currentTarget);
 
-  const key = parseInt(parent.dataset.key, 10);
-  store.trigger("ITEM_ADDED", { item: key });
-});
+//   const key = parseInt(parent.dataset.key, 10);
+//   store.trigger("ITEM_ADDED", { item: key });
+// });
 
 function renderProducts(products) {
   let productContainer = document.querySelector("#products-container");
@@ -41,12 +33,12 @@ function renderProducts(products) {
   products.forEach((product) => {
     productContainer.innerHTML += `
             <div class="product">
-                <img src="${product.image}" class="product-image">
                 <div class="product-content">
-                    <h4 class="product_name">${product_name}</h4>
-                    <p class="product_type">${product_type}</p>
-                    <p class="price">R${price}</p>
-                    <p class="product_quantity">${product_quantity}</p>
+                    <h4 class="product_name">${product[1]}</h4>
+                    <p class="product_type">${product[2]}</p>
+                    <p class="price">${product[3]}</p>
+                    <p class="product_quantity">${product[4]}</p>
+                    <button onclick="addToCart(${product[0]})">Add to Cart</button>
                 </div>
             </div>
         `;
@@ -55,7 +47,7 @@ function renderProducts(products) {
 
 function addToCart(id) {
   let product = products.find((item) => {
-    return item.id == id;
+    return item[0] == id;
   });
   console.log(product);
   cart.push(product);
@@ -77,4 +69,34 @@ function searchForProducts() {
   } else {
     renderProducts(searchProducts);
   }
+}
+
+function sortNamesAsc() {
+  let sortedproducts = products.sort((a, b) => {
+    if (a.title < b.title) return -1;
+    if (a.title > b.title) return 1;
+    return 0;
+  });
+
+  renderProducts(sortedproducts);
+}
+
+function sortNameDesc() {
+  let sortedProducts = products.sort((a, b) => {
+    if (a.title < b.title) return -1;
+    if (a.title > b.title) return 1;
+    return 0;
+  });
+
+  sortedProducts.reverse();
+
+  renderProducts(sortedproducts);
+}
+
+function sortPriceAsc() {
+  let sortedProducts = products.sort((a, b) => a.price - b.price);
+  renderProducts(sortedProducts);
+}
+function toggleCart() {
+  document.querySelector("#cart").classList.toggle("active");
 }

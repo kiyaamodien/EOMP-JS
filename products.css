@@ -59,3 +59,7 @@ body {
 .cd-cart--empty .cd-cart__content {
   transform: translateY(150px);
 }
+
+.product-content {
+  color: white;
+}

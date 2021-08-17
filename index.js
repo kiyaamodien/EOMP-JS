@@ -100,3 +100,25 @@ function sortPriceAsc() {
 function toggleCart() {
   document.querySelector("#cart").classList.toggle("active");
 }
+
+function renderCart(cartItems) {
+  let cartContainer = document.querySelector("#cart");
+  cardContainer.innerHTML = "";
+  if (cardItems.legth > 0) {
+    cardItems.map((cardItem) => {
+      cardContainer.innerHTML += `
+      <div class="product">
+      <div class="product-content">
+      <h4 class="product_name">${cardItem.name}</h4>
+      <p class="product_type">${carditem.type}</p>
+      <p class="price">${price}</p>
+      </div>
+      </div>
+      `;
+
+      cartContainer.innerHTML;
+    });
+  } else {
+    cartContainer.innerHTML = "<h2>No items in cart</h2>";
+  }
+}
